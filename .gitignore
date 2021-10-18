@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/AdventureWorks.OData.API/bin/Debug/net5.0
+/AdventureWorks.OData.API/obj
+/AdventureWorks.OData.Core/bin/Debug/net5.0
+/AdventureWorks.OData.Core/obj
+/AdventureWorks.OData.Persistence/bin/Debug/net5.0
+/AdventureWorks.OData.Persistence/obj
+/.vs/AdventureWorks.OData/v16/.suo
