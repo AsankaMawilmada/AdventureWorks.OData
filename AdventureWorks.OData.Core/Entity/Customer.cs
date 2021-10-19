@@ -40,6 +40,7 @@ namespace AdventureWorks.OData.Core.Entity
 		[MaxLength(25)]
 		public string Phone { get; set; }
 
+
 		[MaxLength(128), Required]
 		public string PasswordHash { get; set; }
 

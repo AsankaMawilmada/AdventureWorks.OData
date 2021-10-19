@@ -38,6 +38,10 @@ namespace AdventureWorks.OData.API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));
+
+            services.AddCors();
+
             services.AddControllers()
                 .AddOData(option => option
                 .Select()
@@ -51,9 +55,7 @@ namespace AdventureWorks.OData.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
-            });
-
-            services.AddDbContext<AdventureWorksContext>(options => options.UseSqlServer(_config.GetConnectionString("DefaultConnection")));   
+            });            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +69,12 @@ namespace AdventureWorks.OData.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithExposedHeaders("Content-Disposition"));
 
             app.UseRouting();
 
