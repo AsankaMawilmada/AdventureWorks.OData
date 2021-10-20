@@ -1,0 +1,9 @@
+<div *ngIf="busy; else notBusy">
+  <div class="spinner-border spinner-border-sm" role="status">
+    <span class="sr-only">Please wait...</span>
+  </div>
+  <span> Please wait...</span>
+</div>
+<ng-template #notBusy>
+  <span>{{buttonText}}</span>
+</ng-template>

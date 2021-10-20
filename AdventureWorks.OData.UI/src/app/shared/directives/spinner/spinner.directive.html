@@ -1,0 +1,4 @@
+<div *ngIf="busy" class="spinner-border" role="status" [ngClass]="{'spinner-border-sm': small}" >
+  <span class="sr-only">Loading...</span>
+</div>
+<p class="text-sm pt-2" *ngIf="text">{{text}}</p>

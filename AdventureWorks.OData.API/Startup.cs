@@ -49,7 +49,7 @@ namespace AdventureWorks.OData.API
                 .Count()
                 .OrderBy()
                 .Expand()
-                .SetMaxTop(10)
+                .SetMaxTop(30)
                 .AddRouteComponents("api", GetEdmModel()));
 
             services.AddSwaggerGen(c =>

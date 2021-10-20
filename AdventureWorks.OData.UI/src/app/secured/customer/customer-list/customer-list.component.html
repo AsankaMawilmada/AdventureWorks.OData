@@ -1,0 +1,79 @@
+
+    <div class="card">
+      <div class="card-header border-0">
+        <div class="row">
+          <div class="col-6">
+            <h3 class="mb-0 list-header float-left mr-2">Candidates</h3>
+            <a type="button" class="btn btn-success btn-icon-only rounded-circle btn-lg add-button mt-1" [routerLink]="['/candidates/new/']" tooltip="Add new candidate">
+              <span class="btn-inner--icon"><i class="ni ni-fat-add text-white"></i></span>
+            </a>   
+          </div>
+          <div class="col-6 text-right">
+            <!-- <div class="input-group">   
+              <input type="search" class="form-control" placeholder="Search by Name, Keyword, Role" [(ngModel)]="searchTerm" />
+              <select class="form-control custom-select"  [(ngModel)]="preferredLocationId" *ngIf="preferredLocations$ | async; let locations">
+                <option [value]="0" [attr.selected]="preferredLocationId == 0">Any location (Preferred)</option>
+                <option *ngFor="let location of locations"
+                        [value]="location.locationId"                     
+                        [attr.selected]="preferredLocationId == location.locationId ? true : null">{{location.suburb}} ({{location.state}})</option>
+              </select>
+              <div class="input-group-append">
+
+                <button type="submit" class="btn btn-outline-primary" tooltip="Search" (click)="onSearch()" icon-button [busy]="busy" [icon-css-class]="'fa-search'"></button>
+                <button type="button" class="btn btn-outline-primary border-left-0" tooltip="Export candidates" (click)="exportCandidates($event)" icon-button [busy]="busy" [icon-css-class]="'fa-download'"></button>                
+              
+              </div>
+            </div>             -->
+          </div>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+    
+        <table class="table table-hover align-items-center table-flush table-striped">
+          <thead class="thead-light">
+            <tr>  
+              <th scope="col">Title</th>
+              <th scope="col">FirstName</th>
+              <th scope="col">LastName</th>
+              <th scope="col">CompanyName</th>
+              <th scope="col">EmailAddress</th>
+              <th scope="col">Phone</th>   
+            </tr>
+          </thead>
+
+          <tbody class="list" table-shimmer *ngIf="busy" [cols]="7" [rows]="10"></tbody>
+
+          <tbody class="list" *ngIf="!busy">            
+            <tr *ngIf="customers.length == 0">
+              <td colspan="7">There are no customers created. Please use Add (+) button to add.</td>
+            </tr>
+
+            <tr *ngFor="let customer of customers">             
+              <td>{{ customer.Title }} {{ customer.Suffix }}</td> 
+              <td>{{ customer.FirstName }}</td> 
+              <td>{{ customer.LastName }}</td> 
+              <td>{{ customer.CompanyName }}</td> 
+              <td>{{ customer.EmailAddress }}</td> 
+              <td>{{ customer.Phone }}</td>             
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-footer py-4">
+        <pagination previousText="&lsaquo;"
+                    nextText="&rsaquo;" 
+                    firstText="&laquo;" 
+                    lastText="&raquo;"
+                    [totalItems]="totalItems"
+                    [itemsPerPage]="itemsPerPage"
+                    [(ngModel)]="page" 
+                    [maxSize]="10"
+                    [boundaryLinks]="true"
+                    (pageChanged)="onPageChanged($event)"></pagination>
+      </div>
+    </div>
+
+

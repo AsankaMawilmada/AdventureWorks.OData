@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace AdventureWorks.OData.Core.Entity
 {
@@ -40,10 +41,11 @@ namespace AdventureWorks.OData.Core.Entity
 		[MaxLength(25)]
 		public string Phone { get; set; }
 
-
+		[IgnoreDataMember]
 		[MaxLength(128), Required]
 		public string PasswordHash { get; set; }
 
+		[IgnoreDataMember]
 		[MaxLength(10), Required]
 		public string PasswordSalt { get; set; }
 
