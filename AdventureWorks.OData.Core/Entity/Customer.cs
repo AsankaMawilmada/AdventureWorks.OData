@@ -9,7 +9,7 @@ namespace AdventureWorks.OData.Core.Entity
     public class Customer
 	{
 		[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		public int CustomerID { get; set; }
+		public int CustomerId { get; set; }
 
 		[Required]
 		public bool NameStyle { get; set; }
