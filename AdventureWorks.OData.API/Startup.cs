@@ -42,15 +42,14 @@ namespace AdventureWorks.OData.API
 
             services.AddCors();
 
-            services.AddControllers()
-                .AddOData(option => option
-                .Select()
-                .Filter()
-                .Count()
-                .OrderBy()
-                .Expand()
-                .SetMaxTop(30)
-                .AddRouteComponents("api", GetEdmModel()));
+            services.AddControllers() 
+                .AddOData(option => option.Select()
+                                .Filter()
+                                .Count()
+                                .OrderBy()
+                                .Expand()
+                                .SetMaxTop(30)
+                                .AddRouteComponents("api", GetEdmModel()));
 
             services.AddSwaggerGen(c =>
             {
@@ -90,6 +89,7 @@ namespace AdventureWorks.OData.API
         {
             ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
             modelBuilder.EntitySet<Customer>("Customers");
+            modelBuilder.EnableLowerCamelCase();
             return modelBuilder.GetEdmModel();
         }
     }

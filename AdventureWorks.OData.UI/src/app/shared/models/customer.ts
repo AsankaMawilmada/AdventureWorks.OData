@@ -1,15 +1,15 @@
 export interface ICustomer {
-    CustomerID:   number;
-    NameStyle:    boolean;
-    Title:        string;
-    FirstName:    string;
-    MiddleName:   null | string;
-    LastName:     string;
-    Suffix:       null | string;
-    CompanyName:  string;
-    SalesPerson:  string;
-    EmailAddress: string;
-    Phone:        string;
-    RowGuid:      string;
-    ModifiedDate: Date;
+    customerID:   number;
+    nameStyle:    boolean;
+    title:        string;
+    firstName:    string;
+    middleName:   null | string;
+    lastName:     string;
+    suffix:       null | string;
+    companyName:  string;
+    salesPerson:  string;
+    emailAddress: string;
+    phone:        string;
+    rowGuid:      string;
+    modifiedDate: Date;
 }

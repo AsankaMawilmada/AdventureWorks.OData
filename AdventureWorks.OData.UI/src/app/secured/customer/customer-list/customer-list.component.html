@@ -38,7 +38,8 @@
               <th scope="col">LastName</th>
               <th scope="col">CompanyName</th>
               <th scope="col">EmailAddress</th>
-              <th scope="col">Phone</th>   
+              <th scope="col">Phone</th>  
+              <th scope="col" style="width: 55px">Edit</th> 
             </tr>
           </thead>
 
@@ -50,12 +51,17 @@
             </tr>
 
             <tr *ngFor="let customer of customers">             
-              <td>{{ customer.Title }} {{ customer.Suffix }}</td> 
-              <td>{{ customer.FirstName }}</td> 
-              <td>{{ customer.LastName }}</td> 
-              <td>{{ customer.CompanyName }}</td> 
-              <td>{{ customer.EmailAddress }}</td> 
-              <td>{{ customer.Phone }}</td>             
+              <td>{{ customer.title }} {{ customer.suffix }}</td> 
+              <td>{{ customer.firstName }}</td> 
+              <td>{{ customer.lastName }}</td> 
+              <td>{{ customer.companyName }}</td> 
+              <td>{{ customer.emailAddress }}</td> 
+              <td>{{ customer.phone }}</td>   
+              <td class="text-center">
+                <a tooltip="Edit">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+              </td>          
             </tr>
             
           </tbody>
