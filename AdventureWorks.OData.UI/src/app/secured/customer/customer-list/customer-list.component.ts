@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 import { first } from 'rxjs/operators';
 import { ODataHelper } from 'src/app/shared/helpers';
 import { IODataResponse, ICustomer } from 'src/app/shared/models';
 import { CustomerService } from 'src/app/shared/services';
+import { CustomerDetailsComponent } from '../customer-details/customer-details.component';
 
 @Component({
   selector: 'app-customer-list',
@@ -11,14 +13,15 @@ import { CustomerService } from 'src/app/shared/services';
   styleUrls: ['./customer-list.component.sass']
 })
 export class CustomerListComponent implements OnInit {
-  columns:string[] = ['CustomerID','Title','Suffix','FirstName','LastName','CompanyName','EmailAddress','Phone','RowGuid'];
+  columns:string[] = ['customerID','title','suffix','firstName','lastName','companyName','emailAddress','phone','rowGuid'];
   busy: boolean = false;
   customers: ICustomer[] = [];
   page: number = 1;
   itemsPerPage:number = 10;
   totalItems: number = 0;
+  bsModalRef?: BsModalRef;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(private customerService: CustomerService, private modalService: BsModalService) {}
 
   ngOnInit(): void {
     this.loadData(this.page);
@@ -30,9 +33,9 @@ export class CustomerListComponent implements OnInit {
       .getPaged(page, this.itemsPerPage, this.columns)
       .pipe(first())
       .subscribe(
-        (data: IODataResponse<ICustomer[]>) => {
-          this.customers = data.value;
-          this.totalItems = ODataHelper.getTotalItems(data['@odata.count'], this.itemsPerPage);
+        (response: IODataResponse<ICustomer[]>) => {
+          this.customers = response.value;
+          this.totalItems = ODataHelper.getTotalItems(response, this.itemsPerPage);
           this.busy = false;
         },
         (error: any) => {
@@ -43,5 +46,17 @@ export class CustomerListComponent implements OnInit {
 
   onPageChanged(event: PageChangedEvent): void {
     this.loadData(this.page = event.page);  
+  }
+
+  onEdit(customer: ICustomer){
+    const initialState: ModalOptions = {
+      animated: true,
+      initialState: {
+        rowGuid: customer.rowGuid,
+        title: `${customer.firstName} ${customer.lastName}`    
+      } 
+    };
+    this.bsModalRef = this.modalService.show(CustomerDetailsComponent, initialState);  
+    //this.bsModalRef.content.   Action
   }
 }

@@ -39,7 +39,7 @@
               <th scope="col">CompanyName</th>
               <th scope="col">EmailAddress</th>
               <th scope="col">Phone</th>  
-              <th scope="col" style="width: 55px">Edit</th> 
+              <th scope="col" style="width: 70px">Edit</th> 
             </tr>
           </thead>
 
@@ -58,9 +58,11 @@
               <td>{{ customer.emailAddress }}</td> 
               <td>{{ customer.phone }}</td>   
               <td class="text-center">
-                <a tooltip="Edit">
+
+                <button (click)="onEdit(customer)" type="button" rel="tooltip" tooltip="Edit" class="btn btn-secondary btn-icon btn-sm mr-0">
                   <i class="fas fa-pencil-alt"></i>
-                </a>
+                </button>
+
               </td>          
             </tr>
             

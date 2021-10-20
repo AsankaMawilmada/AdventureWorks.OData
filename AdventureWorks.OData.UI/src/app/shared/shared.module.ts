@@ -10,6 +10,7 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 import { IconButtonDirective, SpinnerDirective, SubmitButtonDirective, TableShimmerDirective } from './directives';
 import { BaseService, CustomerService } from './services';
+import { BreadcrumbModule } from 'angular-crumbs';
 
 export const modules = [
     CommonModule,
@@ -17,7 +18,7 @@ export const modules = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    // BreadcrumbModule,
+    BreadcrumbModule,
     PaginationModule,
     TypeaheadModule,
     ModalModule
