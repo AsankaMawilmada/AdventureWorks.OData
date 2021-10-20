@@ -25,15 +25,24 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/assets/vendor/nucleo/css/nucleo.css",
+              "src/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css",
+              "src/assets/css/argon.css",
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/jquery/dist/jquery.min.js",
+              "src/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js",  
+              "src/assets/vendor/bootstrap-notify/bootstrap-notify.min.js",
+              "src/assets/js/argon.js"
+            ]
           },
           "configurations": {
             "production": {
