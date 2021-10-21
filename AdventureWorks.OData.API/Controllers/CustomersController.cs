@@ -5,28 +5,27 @@ using Microsoft.AspNetCore.OData.Query;
 
 namespace AdventureWorks.OData.API.Controllers
 {
-    [Route("api/Customers")]
+    [Route("api/{Controller}")]
     public class CustomersController : ControllerBase
     {
-        private readonly AdventureWorksContext _myWorldDbContext;
-        public CustomersController(AdventureWorksContext myWorldDbContext)
+        private readonly AdventureWorksContext _dbContext;
+        public CustomersController(AdventureWorksContext dbContext)
         {
-            _myWorldDbContext = myWorldDbContext;
+            _dbContext = dbContext;
         }
-
 
         [EnableQuery]
         [HttpGet("Paginated")]
         public IActionResult Get()
         {
-            return Ok(_myWorldDbContext.Customers.AsQueryable());
+            return Ok(_dbContext.Customers.AsQueryable());
         }
 
         [EnableQuery]
         [HttpGet("Single/{key}")]
         public Customer Get(int key, string version)
         {
-            return _myWorldDbContext.Customers.Find(key);
+            return _dbContext.Customers.Find(key);
         }
-    }   
+    }
 }

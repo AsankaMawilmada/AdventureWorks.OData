@@ -19,6 +19,7 @@ export class CustomerListComponent implements OnInit {
   page: number = 1;
   itemsPerPage:number = 10;
   totalItems: number = 0;
+  searchTerm?: string;
   bsModalRef?: BsModalRef;
 
   constructor(private customerService: CustomerService, private modalService: BsModalService) {}
@@ -28,9 +29,9 @@ export class CustomerListComponent implements OnInit {
   }
 
   loadData(page: number){
-    this.busy = true;    
+    this.busy = true;   
     this.customerService
-      .getPaged(page, this.itemsPerPage, this.columns)
+      .getPaged(page, this.itemsPerPage, this.columns, this.searchTerm ? this.searchTerm : undefined)
       .pipe(first())
       .subscribe(
         (response: IODataResponse<ICustomer[]>) => {
@@ -46,6 +47,14 @@ export class CustomerListComponent implements OnInit {
 
   onPageChanged(event: PageChangedEvent): void {
     this.loadData(this.page = event.page);  
+  }
+
+  onSearch(){
+    this.loadData(this.page);
+  }
+
+  onAddNew(){
+
   }
 
   onEdit(customer: ICustomer){

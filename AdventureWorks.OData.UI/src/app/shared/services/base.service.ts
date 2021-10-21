@@ -36,16 +36,28 @@ export class BaseService {
     return throwError(error.error);
   }
 
-  getPaged(path: string, page: number, itemsPerPage: number, columns:string[]): Observable<any> {    
-    const params = new HttpParams()      
+  getPaged(path: string, page: number, itemsPerPage: number, columns:string[], _params?: HttpParams): Observable<any> {    
+    let params = new HttpParams()
         .set('$select', columns.toString())
         .set('$count', true)
         .set('$top', itemsPerPage)
         .set('$skip', page > 1 ? (page -1) * itemsPerPage : 0);
+        
+        if(_params != null)
+          params = this.mergeParams(params, _params);    
 
-        return this.http
-        .get(`${environment.api_url}${path}`, { params })
-        .pipe(catchError(this.formatErrors));
+    return this.http
+              .get(`${environment.api_url}${path}`, { params })
+              .pipe(catchError(this.formatErrors));
+  }
+
+  private mergeParams(params: HttpParams, _params: HttpParams): HttpParams{    
+      const items: any = _params;
+      Object.keys(items.updates).forEach(function (key) {
+        params = params.append(items.updates[key].param, items.updates[key].value);
+      });
+
+      return params;
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {

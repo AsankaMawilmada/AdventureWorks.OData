@@ -3,27 +3,18 @@
       <div class="card-header border-0">
         <div class="row">
           <div class="col-6">
-            <h3 class="mb-0 list-header float-left mr-2">Candidates</h3>
-            <a type="button" class="btn btn-success btn-icon-only rounded-circle btn-lg add-button mt-1" [routerLink]="['/candidates/new/']" tooltip="Add new candidate">
+            <h3 class="mb-0 list-header float-left mr-2">Customers</h3>
+            <a type="button" class="btn btn-success btn-icon-only rounded-circle btn-lg add-button mt-1" (click)="onAddNew()" tooltip="Add new customer">
               <span class="btn-inner--icon"><i class="ni ni-fat-add text-white"></i></span>
             </a>   
           </div>
           <div class="col-6 text-right">
-            <!-- <div class="input-group">   
+            <div class="input-group">   
               <input type="search" class="form-control" placeholder="Search by Name, Keyword, Role" [(ngModel)]="searchTerm" />
-              <select class="form-control custom-select"  [(ngModel)]="preferredLocationId" *ngIf="preferredLocations$ | async; let locations">
-                <option [value]="0" [attr.selected]="preferredLocationId == 0">Any location (Preferred)</option>
-                <option *ngFor="let location of locations"
-                        [value]="location.locationId"                     
-                        [attr.selected]="preferredLocationId == location.locationId ? true : null">{{location.suburb}} ({{location.state}})</option>
-              </select>
               <div class="input-group-append">
-
                 <button type="submit" class="btn btn-outline-primary" tooltip="Search" (click)="onSearch()" icon-button [busy]="busy" [icon-css-class]="'fa-search'"></button>
-                <button type="button" class="btn btn-outline-primary border-left-0" tooltip="Export candidates" (click)="exportCandidates($event)" icon-button [busy]="busy" [icon-css-class]="'fa-download'"></button>                
-              
               </div>
-            </div>             -->
+            </div>            
           </div>
         </div>
       </div>
