@@ -21,13 +21,13 @@ export class SidenavComponent implements OnInit {
       // ],
     } as INavItem,
 
-    // {
-    //   title: 'Projects', link: '/projects',
-    //   children: [
-    //     { title: 'Projects', link: '/projects' } as INavItem,
-    //     { title: 'New Project', link: '/projects/new' } as INavItem
-    //   ],
-    // } as INavItem,
+    {
+      title: 'Sales orders', link: '/sales-orders',
+      //   children: [
+      //     { title: 'Projects', link: '/projects' } as INavItem,
+      //     { title: 'New Project', link: '/projects/new' } as INavItem
+      //   ],
+    } as INavItem,
 
     // {
     //   title: 'Demands', link: '/demands',
@@ -49,7 +49,7 @@ export class SidenavComponent implements OnInit {
 
   ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

@@ -36,12 +36,17 @@ export class BaseService {
     return throwError(error.error);
   }
 
-  getPaged(path: string, page: number, itemsPerPage: number, columns:string[], _params?: HttpParams): Observable<any> {    
-    let params = new HttpParams()
-        .set('$select', columns.toString())
+  getPaged(path: string, page: number, itemsPerPage: number, columns:string[], expand?:string[], _params?: HttpParams): Observable<any> {    
+    let params = new HttpParams()      
         .set('$count', true)
         .set('$top', itemsPerPage)
         .set('$skip', page > 1 ? (page -1) * itemsPerPage : 0);
+
+        if(expand != null)
+          params = params.append('$expand', expand.toString())
+
+        if(columns != null)
+          params = params.append('$select', columns.toString())
         
         if(_params != null)
           params = this.mergeParams(params, _params);    

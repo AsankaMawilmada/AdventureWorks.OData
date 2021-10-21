@@ -12,7 +12,7 @@ export class CustomerService {
   private resource:string = 'customers';
   constructor(private service: BaseService) { }
 
-  getPaged(page: number, itemsPerPage: number, columns:string[], searchTerm?: string): Observable<IODataResponse<ICustomer[]>> { 
+  getPaged<T>(page: number, itemsPerPage: number, columns:string[], searchTerm?: string): Observable<IODataResponse<T[]>> { 
     const params = new HttpParams()
                       .set('$filter', `contains(firstName,'${searchTerm}')` + 
                           ` or contains(lastName,'${searchTerm}')`+
@@ -20,8 +20,7 @@ export class CustomerService {
                           ` or contains(emailAddress,'${searchTerm}')`+
                           ` or contains(phone,'${searchTerm}')`);
 
-    return this.service.getPaged(this.resource, page, itemsPerPage, columns, searchTerm ? params : undefined)
+    return this.service.getPaged(this.resource, page, itemsPerPage, columns, undefined, searchTerm ? params : undefined)
          .pipe(map((data) => data));
   }
 }
-

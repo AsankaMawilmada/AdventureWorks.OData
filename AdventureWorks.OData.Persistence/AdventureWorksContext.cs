@@ -1,8 +1,6 @@
 ﻿using AdventureWorks.OData.Core.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdventureWorks.OData.Persistence
 {
@@ -10,6 +8,7 @@ namespace AdventureWorks.OData.Persistence
     {
         public AdventureWorksContext(DbContextOptions options) : base(options) { }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<SalesOrder> SalesOrders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -7,12 +7,14 @@ import { PlaceholderComponentComponent } from './layout/components/placeholder-c
 import { SidenavComponent } from './layout/components/sidenav/sidenav.component';
 import { TopnavComponent } from './layout/components/topnav/topnav.component';
 import { LayoutComponent } from './layout/layout.component';
+import { SalesOrdersModule } from './sales-orders/sales-orders.module';
 import { SecuredRoutingModule } from './secured.routing.module';
 
 export const modules = [
   SharedModule,
   SecuredRoutingModule,
   CustomerModule,
+  SalesOrdersModule  
 ];
 
 export const declarations = [

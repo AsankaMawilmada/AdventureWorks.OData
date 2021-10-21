@@ -31,7 +31,7 @@ export class CustomerListComponent implements OnInit {
   loadData(page: number){
     this.busy = true;   
     this.customerService
-      .getPaged(page, this.itemsPerPage, this.columns, this.searchTerm ? this.searchTerm : undefined)
+      .getPaged<ICustomer>(page, this.itemsPerPage, this.columns, this.searchTerm ? this.searchTerm : undefined)
       .pipe(first())
       .subscribe(
         (response: IODataResponse<ICustomer[]>) => {

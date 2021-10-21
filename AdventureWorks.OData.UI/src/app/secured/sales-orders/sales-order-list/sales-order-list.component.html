@@ -3,14 +3,14 @@
       <div class="card-header border-0">
         <div class="row">
           <div class="col-6">
-            <h3 class="mb-0 list-header float-left mr-2">Customers</h3>
+            <h3 class="mb-0 list-header float-left mr-2">Sales orders</h3>
             <a type="button" class="btn btn-success btn-icon-only rounded-circle btn-lg add-button mt-1" (click)="onAddNew()" tooltip="Add new customer">
               <span class="btn-inner--icon"><i class="ni ni-fat-add text-white"></i></span>
             </a>   
           </div>
           <div class="col-6 text-right">
             <div class="input-group">   
-              <input type="search" class="form-control" placeholder="Search by First name, Last name, Company name, etc." [(ngModel)]="searchTerm" />
+              <input type="search" class="form-control" placeholder="Search by Order number" [(ngModel)]="searchTerm" />
               <div class="input-group-append">
                 <button type="submit" class="btn btn-outline-primary" tooltip="Search" (click)="onSearch()" icon-button [busy]="busy" [icon-css-class]="'fa-search'"></button>
               </div>
@@ -24,12 +24,15 @@
         <table class="table table-hover align-items-center table-flush table-striped">
           <thead class="thead-light">
             <tr>  
-              <th scope="col">Title</th>
-              <th scope="col">FirstName</th>
-              <th scope="col">LastName</th>
-              <th scope="col">CompanyName</th>
-              <th scope="col">EmailAddress</th>
-              <th scope="col">Phone</th>  
+              <th scope="col">Sales Order #</th>
+              <th scope="col">Order date</th>
+              <th scope="col">Customer</th>              
+              <th scope="col">Due date</th>
+              <th scope="col">Ship date</th>              
+              <th scope="col">Sub total</th>
+              <th scope="col">Tax</th>
+              <th scope="col">Ship method</th>                
+              <th scope="col">Freight</th>  
               <th scope="col" style="width: 70px">Edit</th> 
             </tr>
           </thead>
@@ -37,20 +40,23 @@
           <tbody class="list" table-shimmer *ngIf="busy" [cols]="7" [rows]="10"></tbody>
 
           <tbody class="list" *ngIf="!busy">            
-            <tr *ngIf="customers.length == 0">
-              <td colspan="7">There are no customers created. Please use Add (+) button to add.</td>
+            <tr *ngIf="orders.length == 0">
+              <td colspan="7">There are no order created. Please use Add (+) button to add.</td>
             </tr>
 
-            <tr *ngFor="let customer of customers">             
-              <td>{{ customer.title }} {{ customer.suffix }}</td> 
-              <td>{{ customer.firstName }}</td> 
-              <td>{{ customer.lastName }}</td> 
-              <td>{{ customer.companyName }}</td> 
-              <td>{{ customer.emailAddress }}</td> 
-              <td>{{ customer.phone }}</td>   
+            <tr *ngFor="let order of orders">   
+              <td>{{ order.salesOrderNumber }}</td>                
+              <td>{{ order.orderDate | date: 'y MMM d' }}</td> 
+              <td><strong>{{ order.customer?.companyName }}</strong><br />{{ order.customer?.firstName }} {{ order.customer?.lastName }}</td>                       
+              <td>{{ order.dueDate | date: 'y MMM d' }}</td> 
+              <td>{{ order.shipDate | date: 'y MMM d' }}</td> 
+              <td class="text-right">{{ order.subTotal | number:'.1-2' }}</td> 
+              <td class="text-right">{{ order.taxAmt | number:'.1-2' }}</td> 
+              <td>{{ order.shipMethod }}</td>  
+              <td class="text-right">{{ order.freight | number:'.1-2' }}</td>   
               <td class="text-center">
 
-                <button (click)="onEdit(customer)" type="button" rel="tooltip" tooltip="Edit" class="btn btn-secondary btn-icon btn-sm mr-0">
+                <button (click)="onEdit(order)" type="button" rel="tooltip" tooltip="Edit" class="btn btn-secondary btn-icon btn-sm mr-0">
                   <i class="fas fa-pencil-alt"></i>
                 </button>
 

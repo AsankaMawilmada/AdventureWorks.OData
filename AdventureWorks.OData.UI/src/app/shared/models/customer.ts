@@ -1,4 +1,6 @@
-export interface ICustomer {
+import { IEntityBase } from "./entity.base";
+
+export interface ICustomer extends IEntityBase {
     customerId:   number;
     nameStyle:    boolean;
     title:        string;
@@ -10,6 +12,4 @@ export interface ICustomer {
     salesPerson:  string;
     emailAddress: string;
     phone:        string;
-    rowGuid:      string;
-    modifiedDate: Date;
 }
