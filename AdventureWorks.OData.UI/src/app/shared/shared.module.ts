@@ -1,4 +1,4 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
@@ -34,6 +34,7 @@ export const modules = [
   export const providers = [
     //{ provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
     DatePipe,
+    CurrencyPipe,
     BaseService,
     CustomerService,
     // AuthenticationService,  

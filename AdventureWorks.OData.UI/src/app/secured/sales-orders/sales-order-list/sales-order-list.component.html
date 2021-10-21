@@ -29,10 +29,10 @@
               <th scope="col">Customer</th>              
               <th scope="col">Due date</th>
               <th scope="col">Ship date</th>              
-              <th scope="col">Sub total</th>
-              <th scope="col">Tax</th>
+              <th scope="col" class="text-right">Sub total</th>
+              <th scope="col" class="text-right">Tax</th>
               <th scope="col">Ship method</th>                
-              <th scope="col">Freight</th>  
+              <th scope="col" class="text-right">Freight</th>  
               <th scope="col" style="width: 70px">Edit</th> 
             </tr>
           </thead>
@@ -50,10 +50,10 @@
               <td><strong>{{ order.customer?.companyName }}</strong><br />{{ order.customer?.firstName }} {{ order.customer?.lastName }}</td>                       
               <td>{{ order.dueDate | date: 'y MMM d' }}</td> 
               <td>{{ order.shipDate | date: 'y MMM d' }}</td> 
-              <td class="text-right">{{ order.subTotal | number:'.1-2' }}</td> 
-              <td class="text-right">{{ order.taxAmt | number:'.1-2' }}</td> 
+              <td class="text-right">{{ order.subTotal | currency }}</td> 
+              <td class="text-right">{{ order.taxAmt | currency }}</td> 
               <td>{{ order.shipMethod }}</td>  
-              <td class="text-right">{{ order.freight | number:'.1-2' }}</td>   
+              <td class="text-right">{{ order.freight | currency }}</td>   
               <td class="text-center">
 
                 <button (click)="onEdit(order)" type="button" rel="tooltip" tooltip="Edit" class="btn btn-secondary btn-icon btn-sm mr-0">
