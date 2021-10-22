@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.OData.Query;
 namespace AdventureWorks.OData.API.Controllers
 {
     [Route("api/{Controller}")]
-    public class SalesOrdersController : ControllerBase
+    public class SalesOrderHeadersController : ControllerBase
     {
         private readonly AdventureWorksContext _dbContext;
-        public SalesOrdersController(AdventureWorksContext dbContext)
+        public SalesOrderHeadersController(AdventureWorksContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -19,14 +19,14 @@ namespace AdventureWorks.OData.API.Controllers
         [HttpGet("Paginated")]
         public IActionResult Get()
         {
-            return Ok(_dbContext.SalesOrders.AsQueryable());
+            return Ok(_dbContext.SalesOrderHeaders.AsQueryable());
         }
 
         [EnableQuery()]
         [HttpGet("Single/{key}")]
-        public SalesOrder Get(int key, string version)
+        public SalesOrderHeader Get(int key, string version)
         {
-            return _dbContext.SalesOrders.Find(key);
+            return _dbContext.SalesOrderHeaders.Find(key);
         }
     }
 

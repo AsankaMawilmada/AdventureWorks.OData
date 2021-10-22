@@ -1,5 +1,6 @@
 import { ICustomer } from "./customer";
 import { IEntityBase } from "./entity.base";
+import { IAddress } from "./address";
 
 export interface ISalesOrder extends IEntityBase {
     orderDate: Date;
@@ -12,4 +13,6 @@ export interface ISalesOrder extends IEntityBase {
     taxAmt: number;
     freight: number;
     customer?: ICustomer;
+    billToAddress?: IAddress;
+    shipToAddress?: IAddress;    
 }

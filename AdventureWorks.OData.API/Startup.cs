@@ -89,8 +89,14 @@ namespace AdventureWorks.OData.API
         {
             ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
             modelBuilder.EntitySet<Customer>("Customers");
-            modelBuilder.EntitySet<SalesOrder>("SalesOrders");
+            //modelBuilder.EntitySet<Address>("Addresses");
+            //modelBuilder.EntitySet<CustomerAddress>("CustomerAddresses");
+            //modelBuilder.EntitySet<Product>("Products");
+            //modelBuilder.EntitySet<SalesOrderDetail>("SalesOrderDetails");
+            modelBuilder.EntitySet<SalesOrderHeader>("SalesOrderHeaders");
+
             modelBuilder.EnableLowerCamelCase();
+
             return modelBuilder.GetEdmModel();
         }
     }

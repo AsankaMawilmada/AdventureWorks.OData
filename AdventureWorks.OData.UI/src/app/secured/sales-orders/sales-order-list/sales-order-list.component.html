@@ -26,13 +26,12 @@
             <tr>  
               <th scope="col">Sales Order #</th>
               <th scope="col">Order date</th>
-              <th scope="col">Customer</th>              
               <th scope="col">Due date</th>
-              <th scope="col">Ship date</th>              
-              <th scope="col" class="text-right">Sub total</th>
-              <th scope="col" class="text-right">Tax</th>
-              <th scope="col">Ship method</th>                
-              <th scope="col" class="text-right">Freight</th>  
+              <th scope="col">Customer</th>  
+              <th scope="col">Billing Address</th>              
+              <th scope="col">Ship date</th>     
+              <th scope="col">Ship to Address</th>         
+              <th scope="col" class="text-right">Sub total</th>         
               <th scope="col" style="width: 70px">Edit</th> 
             </tr>
           </thead>
@@ -47,13 +46,22 @@
             <tr *ngFor="let order of orders">   
               <td>{{ order.salesOrderNumber }}</td>                
               <td>{{ order.orderDate | date: 'y MMM d' }}</td> 
+              <td>{{ order.dueDate | date: 'y MMM d' }}</td>             
               <td><strong>{{ order.customer?.companyName }}</strong><br />{{ order.customer?.firstName }} {{ order.customer?.lastName }}</td>                       
-              <td>{{ order.dueDate | date: 'y MMM d' }}</td> 
+              <td>
+                {{ order?.billToAddress?.addressLine1 }} {{ order?.billToAddress?.addressLine2 }}<br />
+                {{ order?.billToAddress?.city }}<br />
+                {{ order?.billToAddress?.stateProvince }} {{ order?.billToAddress?.postalCode }}<br />
+                {{ order?.billToAddress?.countryRegion }}
+              </td>                            
               <td>{{ order.shipDate | date: 'y MMM d' }}</td> 
+              <td>
+                {{ order?.shipToAddress?.addressLine1 }} {{ order?.shipToAddress?.addressLine2 }}<br />
+                {{ order?.shipToAddress?.city }}<br />
+                {{ order?.shipToAddress?.stateProvince }} {{ order?.shipToAddress?.postalCode }}<br />
+                {{ order?.shipToAddress?.countryRegion }}
+              </td>
               <td class="text-right">{{ order.subTotal | currency }}</td> 
-              <td class="text-right">{{ order.taxAmt | currency }}</td> 
-              <td>{{ order.shipMethod }}</td>  
-              <td class="text-right">{{ order.freight | currency }}</td>   
               <td class="text-center">
 
                 <button (click)="onEdit(order)" type="button" rel="tooltip" tooltip="Edit" class="btn btn-secondary btn-icon btn-sm mr-0">

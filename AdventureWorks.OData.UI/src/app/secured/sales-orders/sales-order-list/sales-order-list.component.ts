@@ -11,7 +11,7 @@ import { SalesOrderService } from 'src/app/shared/services';
   styleUrls: ['./sales-order-list.component.sass']
 })
 export class SalesOrderListComponent implements OnInit {
-  columns:string[] = ['salesOrderNumber','orderDate','customer','dueDate','shipDate','shipMethod','status','subTotal','taxAmt','freight','rowGuid'];
+  columns:string[] = ['salesOrderNumber','orderDate','dueDate','shipDate','status','subTotal','rowGuid'];
   busy: boolean = false;
   orders: ISalesOrder[] = [];
   page: number = 1;
