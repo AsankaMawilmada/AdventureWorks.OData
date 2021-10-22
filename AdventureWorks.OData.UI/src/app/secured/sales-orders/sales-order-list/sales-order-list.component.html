@@ -37,11 +37,11 @@
             </tr>
           </thead>
 
-          <tbody class="list" table-shimmer *ngIf="busy" [cols]="7" [rows]="10"></tbody>
+          <tbody class="list" table-shimmer *ngIf="busy" [cols]="10" [rows]="10"></tbody>
 
           <tbody class="list" *ngIf="!busy">            
             <tr *ngIf="orders.length == 0">
-              <td colspan="7">There are no order created. Please use Add (+) button to add.</td>
+              <td colspan="10">There are no order created. Please use Add (+) button to add.</td>
             </tr>
 
             <tr *ngFor="let order of orders">   

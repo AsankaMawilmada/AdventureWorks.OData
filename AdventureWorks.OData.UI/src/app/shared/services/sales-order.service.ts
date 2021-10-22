@@ -16,7 +16,7 @@ export class SalesOrderService {
     const params = new HttpParams()
                       .set('$filter', `contains(salesOrderNumber,'${searchTerm}')`);                     
 
-    return this.service.getPaged(this.resource, page, itemsPerPage, columns, ['customer'] , searchTerm ? params : undefined)
+    return this.service.getPaged(this.resource, page, itemsPerPage, columns, ['customer($select=companyName,firstName,lastName)'] , searchTerm ? params : undefined)
          .pipe(map((data) => data));
   }
 }
