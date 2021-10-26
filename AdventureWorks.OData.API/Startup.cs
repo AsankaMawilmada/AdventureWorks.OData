@@ -11,6 +11,7 @@ using AdventureWorks.OData.Core.Entity;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.OData.UriParser;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AdventureWorks.OData.API
 {
@@ -42,7 +43,7 @@ namespace AdventureWorks.OData.API
 
             services.AddCors();
 
-            services.AddControllers() 
+            services.AddControllers()
                 .AddOData(option => option.Select()
                                 .Filter()
                                 .Count()
@@ -50,7 +51,7 @@ namespace AdventureWorks.OData.API
                                 .Expand()
                                 .SetMaxTop(30)
                                 .AddRouteComponents("api", GetEdmModel()));
-
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
@@ -87,7 +88,7 @@ namespace AdventureWorks.OData.API
 
         public static IEdmModel GetEdmModel()
         {
-            ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
+            ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();            
             modelBuilder.EntitySet<Customer>("Customers");
             //modelBuilder.EntitySet<Address>("Addresses");
             //modelBuilder.EntitySet<CustomerAddress>("CustomerAddresses");
@@ -96,6 +97,7 @@ namespace AdventureWorks.OData.API
             modelBuilder.EntitySet<SalesOrderHeader>("SalesOrderHeaders");
 
             modelBuilder.EnableLowerCamelCase();
+  
 
             return modelBuilder.GetEdmModel();
         }

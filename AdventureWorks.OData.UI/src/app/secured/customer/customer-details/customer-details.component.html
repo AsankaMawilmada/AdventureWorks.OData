@@ -2,8 +2,10 @@
   <h4 class="modal-title pull-left">{{title}}</h4> 
 </div>
 <div class="modal-body">
- {{rowGuid}}
+ {{customerId}}
+
+ {{customer | json}}
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-default" >Close</button>
+  <button type="button" class="btn btn-default" (click)="close()">Close</button>
 </div>

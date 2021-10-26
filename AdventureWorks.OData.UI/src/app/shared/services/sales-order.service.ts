@@ -13,14 +13,14 @@ export class SalesOrderService {
   constructor(private service: BaseService) { }
 
   getPaged<T>(page: number, itemsPerPage: number, columns:string[], searchTerm?: string): Observable<IODataResponse<T[]>> { 
-    const params = new HttpParams()
+    const filterParams = new HttpParams()
                       .set('$filter', `contains(salesOrderNumber,'${searchTerm}')`);                     
 
     const expand = ['customer($select=companyName,firstName,lastName)' + 
                     ',billToAddress($select=addressLine1,addressLine2,city,stateProvince,countryRegion,postalCode)' +
                     ',shipToAddress($select=addressLine1,addressLine2,city,stateProvince,countryRegion,postalCode)'];
 
-    return this.service.getPaged(this.resource, page, itemsPerPage, columns, expand, searchTerm ? params : undefined)
+    return this.service.getPaged<IODataResponse<T[]>>(this.resource, page, itemsPerPage, columns, expand, searchTerm ? filterParams : undefined)
          .pipe(map((data) => data));
   }
 }

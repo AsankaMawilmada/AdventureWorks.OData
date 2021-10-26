@@ -2,7 +2,7 @@
 
 namespace AdventureWorks.OData.Core.Entity
 {
-    public partial class SalesOrderDetail
+    public partial class SalesOrderDetail : EntityBase
     {
         public int SalesOrderId { get; set; }
         public int SalesOrderDetailId { get; set; }
@@ -11,8 +11,6 @@ namespace AdventureWorks.OData.Core.Entity
         public decimal UnitPrice { get; set; }
         public decimal UnitPriceDiscount { get; set; }
         public decimal LineTotal { get; set; }
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Product Product { get; set; }
         public virtual SalesOrderHeader SalesOrder { get; set; }

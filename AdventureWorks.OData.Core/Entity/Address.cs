@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace AdventureWorks.OData.Core.Entity
 {
 
-    public partial class Address
+    public partial class Address : EntityBase
     {
         public Address()
         {
@@ -20,8 +20,6 @@ namespace AdventureWorks.OData.Core.Entity
         public string StateProvince { get; set; }
         public string CountryRegion { get; set; }
         public string PostalCode { get; set; }
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaderBillToAddresses { get; set; }

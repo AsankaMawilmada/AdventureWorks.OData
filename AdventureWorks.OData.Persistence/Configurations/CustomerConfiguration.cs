@@ -10,8 +10,8 @@ namespace AdventureWorks.OData.Persistence.Configurations
         {
             builder.ToTable("Customer", "SalesLT");
 
-            builder.HasIndex(e => e.Rowguid, "AK_Customer_rowguid")
-                .IsUnique();
+            builder.HasIndex(e => e.RowGuid, "AK_Customer_rowguid")
+                .IsUnique();               
 
             builder.HasIndex(e => e.EmailAddress, "IX_Customer_EmailAddress");
 
@@ -54,7 +54,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
             builder.Property(e => e.Phone)
                 .HasMaxLength(25);
 
-            builder.Property(e => e.Rowguid)
+            builder.Property(e => e.RowGuid)
                 .HasColumnName("rowguid")
                 .HasDefaultValueSql("(newid())");
 

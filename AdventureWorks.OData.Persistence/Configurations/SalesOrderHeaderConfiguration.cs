@@ -16,7 +16,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
             builder.HasIndex(e => e.SalesOrderNumber, "AK_SalesOrderHeader_SalesOrderNumber")
                 .IsUnique();
 
-            builder.HasIndex(e => e.Rowguid, "AK_SalesOrderHeader_rowguid")
+            builder.HasIndex(e => e.RowGuid, "AK_SalesOrderHeader_rowguid")
                 .IsUnique();
 
             builder.HasIndex(e => e.CustomerId, "IX_SalesOrderHeader_CustomerID");
@@ -63,7 +63,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
 
             builder.Property(e => e.RevisionNumber);
 
-            builder.Property(e => e.Rowguid)
+            builder.Property(e => e.RowGuid)
                 .HasColumnName("rowguid")
                 .HasDefaultValueSql("(newid())");
 

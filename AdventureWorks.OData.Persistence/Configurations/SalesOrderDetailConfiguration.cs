@@ -13,7 +13,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
             builder.HasKey(e => new { e.SalesOrderId, e.SalesOrderDetailId })
                     .HasName("PK_SalesOrderDetail_SalesOrderID_SalesOrderDetailID");
 
-            builder.HasIndex(e => e.Rowguid, "AK_SalesOrderDetail_rowguid")
+            builder.HasIndex(e => e.RowGuid, "AK_SalesOrderDetail_rowguid")
                 .IsUnique();
 
             builder.HasIndex(e => e.ProductId, "IX_SalesOrderDetail_ProductID");
@@ -38,7 +38,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
             builder.Property(e => e.ProductId)
                 .HasColumnName("ProductID");
 
-            builder.Property(e => e.Rowguid)
+            builder.Property(e => e.RowGuid)
                 .HasColumnName("rowguid")
                 .HasDefaultValueSql("(newid())");
 

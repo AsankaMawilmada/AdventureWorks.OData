@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace AdventureWorks.OData.Core.Entity
 {
-    public partial class Customer
+    public partial class Customer : EntityBase
     {
         public Customer()
-        {            
+        {
             CustomerAddresses = new HashSet<CustomerAddress>();
             SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
@@ -31,9 +30,6 @@ namespace AdventureWorks.OData.Core.Entity
         public string PasswordHash { get; set; }
         [IgnoreDataMember]
         public string PasswordSalt { get; set; }
-
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }

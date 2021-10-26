@@ -13,7 +13,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
             builder.HasKey(e => new { e.CustomerId, e.AddressId })
                 .HasName("PK_CustomerAddress_CustomerID_AddressID");
 
-            builder.HasIndex(e => e.Rowguid, "AK_CustomerAddress_rowguid")
+            builder.HasIndex(e => e.RowGuid, "AK_CustomerAddress_rowguid")
                 .IsUnique();
 
             builder.Property(e => e.CustomerId)
@@ -30,7 +30,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
                 .HasColumnType("datetime")
                 .HasDefaultValueSql("(getdate())");
 
-            builder.Property(e => e.Rowguid)
+            builder.Property(e => e.RowGuid)
                 .HasColumnName("rowguid")
                 .HasDefaultValueSql("(newid())");
 

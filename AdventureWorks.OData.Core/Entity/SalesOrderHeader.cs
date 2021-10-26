@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AdventureWorks.OData.Core.Entity
 {
-    public partial class SalesOrderHeader
+    public partial class SalesOrderHeader : EntityBase
     {
         public SalesOrderHeader()
         {
@@ -33,8 +33,6 @@ namespace AdventureWorks.OData.Core.Entity
         public decimal Freight { get; set; }
         public decimal TotalDue { get; set; }
         public string Comment { get; set; }
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         public virtual Address BillToAddress { get; set; }
         public virtual Customer Customer { get; set; }

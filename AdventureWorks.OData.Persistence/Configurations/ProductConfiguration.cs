@@ -16,7 +16,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
                 builder.HasIndex(e => e.ProductNumber, "AK_Product_ProductNumber")
                     .IsUnique();
 
-                builder.HasIndex(e => e.Rowguid, "AK_Product_rowguid")
+                builder.HasIndex(e => e.RowGuid, "AK_Product_rowguid")
                     .IsUnique();
 
                 builder.Property(e => e.ProductId)
@@ -49,7 +49,7 @@ namespace AdventureWorks.OData.Persistence.Configurations
                     .IsRequired()
                     .HasMaxLength(25);
 
-                builder.Property(e => e.Rowguid)
+                builder.Property(e => e.RowGuid)
                     .HasColumnName("rowguid")
                     .HasDefaultValueSql("(newid())");
 

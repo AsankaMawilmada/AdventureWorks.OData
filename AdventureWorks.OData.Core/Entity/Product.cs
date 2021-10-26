@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AdventureWorks.OData.Core.Entity
 {
-    public partial class Product
+    public partial class Product : EntityBase
     {
         public Product()
         {
@@ -25,8 +25,6 @@ namespace AdventureWorks.OData.Core.Entity
         public DateTime? DiscontinuedDate { get; set; }
         public byte[] ThumbNailPhoto { get; set; }
         public string ThumbnailPhotoFileName { get; set; }
-        public Guid Rowguid { get; set; }
-        public DateTime ModifiedDate { get; set; }
 
         //public virtual ProductCategory ProductCategory { get; set; }
         //public virtual ProductModel ProductModel { get; set; }

@@ -20,7 +20,6 @@ export class CustomerListComponent implements OnInit {
   itemsPerPage:number = 10;
   totalItems: number = 0;
   searchTerm?: string;
-  bsModalRef?: BsModalRef;
 
   constructor(private customerService: CustomerService, private modalService: BsModalService) {}
 
@@ -61,11 +60,11 @@ export class CustomerListComponent implements OnInit {
     const initialState: ModalOptions = {
       animated: true,
       initialState: {
-        rowGuid: customer.rowGuid,
+        customerId: customer.customerId,
         title: `${customer.firstName} ${customer.lastName}`    
       } 
     };
-    this.bsModalRef = this.modalService.show(CustomerDetailsComponent, initialState);  
-    //this.bsModalRef.content.   Action
+    const modalRef: BsModalRef = this.modalService.show(CustomerDetailsComponent, initialState);  
+    modalRef.content.onAction.subscribe(() => { modalRef.hide(); });
   }
 }

@@ -1,5 +1,4 @@
-﻿using AdventureWorks.OData.Core.Entity;
-using AdventureWorks.OData.Persistence;
+﻿using AdventureWorks.OData.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 
@@ -14,18 +13,16 @@ namespace AdventureWorks.OData.API.Controllers
             _dbContext = dbContext;
         }
 
-        [EnableQuery]
-        [HttpGet("Paginated")]
+        [EnableQuery]      
         public IActionResult Get()
         {
             return Ok(_dbContext.Customers.AsQueryable());
         }
 
         [EnableQuery]
-        [HttpGet("Single/{key}")]
-        public Customer Get(int key, string version)
+        public IActionResult Get(int key, string version)
         {
-            return _dbContext.Customers.Find(key);
+            return Ok(_dbContext.Customers.Find(key));
         }
     }
 }
