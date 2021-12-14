@@ -41,4 +41,10 @@ export class CustomerService {
       ], undefined)
       .pipe(map((data) => data));
   }
+
+  update(customer: ICustomer): Observable<ICustomer> {
+    return this.service
+      .put(`${this.resource}(${customer.customerId})`, customer)
+      .pipe(map((data) => data));
+  }
 }

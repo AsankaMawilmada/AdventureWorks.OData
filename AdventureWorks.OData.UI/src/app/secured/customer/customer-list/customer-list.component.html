@@ -41,7 +41,7 @@
               <td colspan="7">There are no customers created. Please use Add (+) button to add.</td>
             </tr>
 
-            <tr *ngFor="let customer of customers">             
+            <tr *ngFor="let customer of customers" (dblclick)="onEdit(customer)">             
               <td>{{ customer.title }} {{ customer.suffix }}</td> 
               <td>{{ customer.firstName }}</td> 
               <td>{{ customer.lastName }}</td> 

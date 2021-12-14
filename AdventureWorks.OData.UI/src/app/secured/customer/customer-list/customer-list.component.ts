@@ -59,6 +59,7 @@ export class CustomerListComponent implements OnInit {
   onEdit(customer: ICustomer){
     const initialState: ModalOptions = {
       animated: true,
+      class:'modal-lg',
       initialState: {
         customerId: customer.customerId,
         title: `${customer.firstName} ${customer.lastName}`    

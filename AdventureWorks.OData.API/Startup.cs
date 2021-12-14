@@ -15,16 +15,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdventureWorks.OData.API
 {
-    public class CaseInsensitiveResolver : ODataUriResolver
-    {
-        private bool _enableCaseInsensitive;
-
-        public override bool EnableCaseInsensitive
-        {
-            get { return true; }
-            set { _enableCaseInsensitive = value; }
-        }
-    }
     public class Startup
     {
         private readonly IConfiguration _config;

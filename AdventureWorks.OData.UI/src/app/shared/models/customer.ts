@@ -5,9 +5,9 @@ export interface ICustomer extends IEntityBase {
     nameStyle:    boolean;
     title:        string;
     firstName:    string;
-    middleName:   null | string;
+    middleName:   string;
     lastName:     string;
-    suffix:       null | string;
+    suffix:       string;
     companyName:  string;
     salesPerson:  string;
     emailAddress: string;
